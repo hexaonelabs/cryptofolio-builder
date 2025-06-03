@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cryptofolio Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <h1>Cryptofolio Builder</h1>
+        <p>
+          Visualize your crypto allocations across different investment sectors
+        </p>
+      </header>
+
+      <main class="content">
+        <section class="control-panel">
+          <div class="initial-investment">
+            <label for="total-investment">Total Investment Amount</label>
+            <input
+              type="number"
+              id="total-investment"
+              placeholder="Enter total amount"
+              min="0"
+              step="0.01"
+            />
+          </div>
+
+          <div class="initial-investment">
+            <label for="total-borrow">
+              Total Borrow Amount <br />
+              <small>(max 60% of lending value)</small>
+            </label>
+            <input
+              type="number"
+              id="total-borrow"
+              placeholder="Enter borrow amount"
+              min="0"
+              step="0.01"
+            />
+          </div>
+
+          <!-- section pour l'allocation des emprunts -->
+          <div
+            id="borrow-allocation-section"
+            class="borrow-allocation"
+            style="display: none"
+          >
+            <h3>Borrow Allocation</h3>
+            <p class="allocation-info">
+              Distribute your borrowed funds across sectors:
+            </p>
+
+            <!-- Nouveau contrôle d'ajout -->
+            <div class="borrow-add-control">
+              <div class="borrow-input-group">
+                <select id="borrow-sector-select">
+                  <option value="" disabled selected>Select sector</option>
+                  <option value="lending">Lending</option>
+                  <option value="lp">Liquidity Provider (LP)</option>
+                  <option value="hodl">HODL</option>
+                  <option value="custom">Custom Strategy</option>
+                </select>
+                <select id="borrow-subsection-select">
+                  <option value="" disabled selected>Select subsection</option>
+                </select>
+                <input
+                  type="number"
+                  id="borrow-percentage-input"
+                  placeholder="%"
+                  min="0"
+                  max="100"
+                  step="0.1"
+                />
+                <button id="add-borrow-btn" class="btn-primary">Add</button>
+              </div>
+            </div>
+
+            <!-- Liste des allocations ajoutées -->
+            <div id="borrow-allocations-list" class="borrow-allocations-list">
+              <!-- Les allocations seront affichées ici -->
+            </div>
+
+            <div class="borrow-summary">
+              <p>
+                Total Borrow Allocation:
+                <span id="total-borrow-allocation">0%</span>
+              </p>
+              <p>
+                Remaining Borrow:
+                <span id="remaining-borrow-allocation">100%</span>
+              </p>
+            </div>
+          </div>
+
+          <h2>Portfolio Allocation</h2>
+          <div class="sector-controls">
+            <div class="select-wrapper">
+              <select id="sector-select">
+                <option value="" disabled selected>Select a sector</option>
+                <option value="lending">Lending</option>
+                <option value="lp">Liquidity Provider (LP)</option>
+                <option value="hodl">HODL</option>
+                <option value="custom">Custom Strategy</option>
+              </select>
+            </div>
+            <div class="subsection-wrapper">
+              <select id="subsection-select">
+                <option value="" disabled selected>Select a subsection</option>
+              </select>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="number"
+                id="percentage-input"
+                placeholder="50%"
+                min="0"
+                max="100"
+                step="0.1"
+              />
+            </div>
+            <button id="add-sector-btn" class="btn-primary">Add</button>
+          </div>
+
+          <div id="selected-sectors" class="selected-sectors">
+            <!-- Selected sectors will be displayed here -->
+          </div>
+
+          <div class="portfolio-summary">
+            <h3>Portfolio Summary</h3>
+            <p>Total Allocation: <span id="total-allocation">0%</span></p>
+            <p>Remaining: <span id="remaining-allocation">100%</span></p>
+          </div>
+        </section>
+
+        <section class="visualization-panel">
+          <h2>Portfolio Visualization</h2>
+          <div id="visualization" class="visualization">
+            <!-- Visualization will be rendered here -->
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Cryptofolio Builder is an open-source project developed by <a href="https://hexaonelabs.com/" target="_black">HexaOne Labs</a>  to help users build their wallet.
+        </p>
+      </footer>
+    </div>
+    <script type="module" src="/js/main.js"></script>
+  </body>
+</html>

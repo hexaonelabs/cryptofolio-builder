@@ -1,0 +1,19 @@
+{
+  "name": "cryptofolio-builder",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy:app": "npm run build && firebase deploy --only hosting"
+  },
+  "devDependencies": {
+    "vite": "^5.4.2"
+  },
+  "dependencies": {
+    "d3": "^7.8.5",
+    "d3-sankey": "^0.12.3"
+  }
+}
